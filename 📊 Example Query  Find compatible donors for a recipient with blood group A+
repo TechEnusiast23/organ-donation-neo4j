@@ -1,0 +1,2 @@
+MATCH (d:Donor)-[:CAN_DONATE]->(o:Organ)<-[:NEEDS]-(r:Recipient {blood_group: "A+"})
+RETURN d.name AS Donor, o.type AS Organ, r.name AS Recipient;
