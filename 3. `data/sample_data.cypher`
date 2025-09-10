@@ -1,0 +1,21 @@
+
+---
+
+#### 3. `data/sample_data.cypher`
+```cypher
+CREATE (h1:Hospital {name: "City Hospital", city: "Mumbai"});
+CREATE (h2:Hospital {name: "Care Hospital", city: "Pune"});
+
+CREATE (d1:Donor {name: "Rahul", blood_group: "A+", age: 32, location: "Mumbai"});
+CREATE (d2:Donor {name: "Sneha", blood_group: "B+", age: 28, location: "Pune"});
+
+CREATE (r1:Recipient {name: "Anjali", blood_group: "A+", condition: "Kidney Failure", location: "Mumbai"});
+CREATE (r2:Recipient {name: "Arjun", blood_group: "B+", condition: "Liver Failure", location: "Pune"});
+
+CREATE (o1:Organ {type: "Kidney", status: "Available"});
+CREATE (o2:Organ {type: "Liver", status: "Available"});
+
+MERGE (d1)-[:CAN_DONATE]->(o1)-[:NEEDS]->(r1);
+MERGE (d2)-[:CAN_DONATE]->(o2)-[:NEEDS]->(r2);
+MERGE (h1)-[:HAS]->(o1);
+MERGE (h2)-[:HAS]->(o2);
