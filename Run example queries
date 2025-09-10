@@ -1,0 +1,1 @@
+cypher-shell -f queries/match_queries.cypher
